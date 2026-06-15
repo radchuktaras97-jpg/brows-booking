@@ -1,129 +1,121 @@
+console.log("SCRIPT LOADED");
+
 let currentDate = new Date();
 let selectedService = "";
 let selectedDate = null;
 let selectedTime = "";
-let services = [];
 
 /* =========================
-   КАЛЕНДАРЬ
+   INIT
+========================= */
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM READY");
+
+  renderCalendar();
+  loadServices();
+});
+
+/* =========================
+   SERVICES (FIXED)
+========================= */
+async function loadServices() {
+  const container = document.getElementById("servicesList");
+  container.innerHTML = "";
+
+  try {
+    const res = await fetch("/api/services");
+    const data = await res.json();
+
+    console.log("SERVICES:", data);
+
+    if (!data || data.length === 0) {
+      container.innerHTML = "<p>Немає послуг</p>";
+      return;
+    }
+
+    data.forEach(service => {
+      const btn = document.createElement("button");
+
+      btn.innerText = `${service.name} — ${service.price} грн`;
+
+      btn.addEventListener("click", () => {
+        console.log("CLICK WORKS");
+
+        selectedService = `${service.name} - ${service.price} грн`;
+
+        document.getElementById("services").style.display = "none";
+        document.getElementById("dateBlock").style.display = "block";
+
+        renderCalendar();
+      });
+
+      container.appendChild(btn);
+    });
+
+  } catch (err) {
+    console.error("SERVICE ERROR:", err);
+
+    container.innerHTML = "<p style='color:red'>Ошибка загрузки услуг</p>";
+  }
+}
+
+/* =========================
+   CALENDAR (FIXED)
 ========================= */
 function renderCalendar() {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
   const monthNames = [
-  "Січень","Лютий","Березень","Квітень","Травень","Червень",
-  "Липень","Серпень","Вересень","Жовтень","Листопад","Грудень"
-];
+    "Січень","Лютий","Березень","Квітень","Травень","Червень",
+    "Липень","Серпень","Вересень","Жовтень","Листопад","Грудень"
+  ];
 
   document.getElementById("monthLabel").innerText =
     `${monthNames[month]} ${year}`;
 
-  const daysContainer = document.getElementById("calendarDays");
-  daysContainer.innerHTML = "";
-
-  const weekDays = ["ПН","ВТ","СР","ЧТ","ПТ","СБ","НД"];
-
-weekDays.forEach(d => {
-  const el = document.createElement("div");
-  el.innerText = d;
-  el.style.fontWeight = "bold";
-  el.style.color = "gold";
-  el.style.fontSize = "12px";
-  daysContainer.appendChild(el);
-});
+  const container = document.getElementById("calendarDays");
+  container.innerHTML = "";
 
   const firstDay = new Date(year, month, 1).getDay();
+  const offset = firstDay === 0 ? 6 : firstDay - 1;
+
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  for (let i = 0; i < firstDay; i++) {
-    daysContainer.appendChild(document.createElement("div"));
+  for (let i = 0; i < offset; i++) {
+    container.appendChild(document.createElement("div"));
   }
-
-  for (let day = 1; day <= daysInMonth; day++) {
-  const div = document.createElement("div");
-  div.classList.add("day");
-  div.innerText = day;
-  const now = new Date();
-
-if (
-  day === now.getDate() &&
-  month === now.getMonth() &&
-  year === now.getFullYear()
-) {
-  div.style.border = "1px solid gold";
-  div.style.boxShadow = "0 0 10px rgba(212,175,55,0.6)";
-}
 
   const today = new Date();
   today.setHours(0,0,0,0);
 
-  const thisDate = new Date(year, month, day);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement("div");
+    el.innerText = d;
 
-  // ❌ ЗАПРЕТ ПРОШЛЫХ ДНЕЙ
-  if (thisDate < today) {
-    div.style.opacity = "0.3";
-    div.style.pointerEvents = "none";
-  }
+    const date = new Date(year, month, d);
 
-  div.onclick = () => {
-    document.querySelectorAll(".day").forEach(d => d.classList.remove("active"));
-    div.classList.add("active");
+    if (date < today) {
+      el.style.opacity = "0.3";
+      el.style.pointerEvents = "none";
+    }
 
-    selectedDate =
-    `${year}-${String(month + 1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+    el.onclick = () => {
+      selectedDate =
+        `${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
 
-    // 🔥 авто переход дальше
-    setTimeout(() => {
+      console.log("DATE:", selectedDate);
+
       document.getElementById("dateBlock").style.display = "none";
       document.getElementById("timeBlock").style.display = "block";
+    };
 
-      loadBusyTimes();
-    }, 200);
-  };
-
-  daysContainer.appendChild(div);
-}
-}
-
-function prevMonth() {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-}
-
-function nextMonth() {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-}
-
-
-/* =========================
-   SERVICE
-========================= */
-function selectService(service) {
-  selectedService = service;
-
-  document.getElementById("services").style.display = "none";
-  document.getElementById("dateBlock").style.display = "block";
-}
-
-/* =========================
-   DATE → TIME
-========================= */
-function goToTime() {
-  if (!selectedDate) {
-    alert("Оберіть дату");
-    return;
+    container.appendChild(el);
   }
-
-  loadBusyTimes();
-
-  document.getElementById("dateBlock").style.display = "none";
-  document.getElementById("timeBlock").style.display = "block";
 }
 
 /* =========================
-   TIME → USER
+   TIME
 ========================= */
 function selectTimeAndNext(time) {
   selectedTime = time;
@@ -133,169 +125,35 @@ function selectTimeAndNext(time) {
 }
 
 /* =========================
-   CONFIRM BOOKING
+   BOOKING (FIXED)
 ========================= */
 function confirmBooking() {
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
 
-  if (!selectedTime) {
-    alert("Оберіть час");
-    return;
-  }
-
-  if (!name || !phone) {
-    alert("Введіть ім’я і телефон");
-    return;
-  }
-
-  const bookingData = {
-    name,
-    phone,
-    service: selectedService,
-    date: selectedDate,
-    time: selectedTime
-  };
+  if (!selectedService) return alert("Оберіть послугу");
+  if (!selectedDate) return alert("Оберіть дату");
+  if (!selectedTime) return alert("Оберіть час");
+  if (!name || !phone) return alert("Введіть дані");
 
   fetch("/bookings", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(bookingData)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name,
+      phone,
+      service: selectedService,
+      date: selectedDate,
+      time: selectedTime
+    })
   })
-  .then(res => res.json())
-  .then(data => {
-
+  .then(r => r.json())
+  .then(() => {
     document.getElementById("userBlock").style.display = "none";
-
-    const success = document.getElementById("successBlock");
-    success.style.display = "block";
-
-    setTimeout(() => {
-      success.classList.add("show");
-    }, 50);
-
-    document.getElementById("successText").innerText =
-      `Ви записані на ${selectedDate} о ${selectedTime}`;
-
+    document.getElementById("successBlock").style.display = "block";
   })
   .catch(err => {
     console.error(err);
-    alert("Помилка відправки");
+    alert("Ошибка записи");
   });
 }
-
-/* =========================
-   BUSY TIMES
-========================= */
-async function loadBusyTimes() {
-  if (!selectedDate) return;
-
-  const res = await fetch(`/busy?date=${selectedDate}`);
-  const busy = await res.json();
-
-  const buttons = document.querySelectorAll(".time button");
-
-  buttons.forEach(btn => {
-    const time = btn.innerText;
-
-    if (busy.includes(time)) {
-      btn.disabled = true;
-      btn.style.background = "#444";
-      btn.style.color = "#999";
-      btn.style.cursor = "not-allowed";
-    } else {
-      btn.disabled = false;
-      btn.style.background = "";
-      btn.style.color = "";
-      btn.style.cursor = "pointer";
-    }
-  });
-}
-function showWish() {
-  const btn = document.getElementById("wishBtn");
-  const text = document.getElementById("wishText");
-  const home = document.getElementById("homeBtn");
-
-  btn.style.display = "none";
-
-  // 🎲 случайное пожелание
-  const randomIndex = Math.floor(Math.random() * wishes.length);
-  const randomWish = wishes[randomIndex];
-
-  text.innerText = randomWish;
-  text.style.display = "block";
-  text.classList.add("showWish");
-
-  setTimeout(() => {
-    home.style.display = "inline-block";
-  }, 600);
-}
-
-const wishes = [
-  "Виконання всіх бажань — ось що чекає на тебе попереду!",
-  "Вір у себе, і справжнє диво обов'язково станеться!",
-  "Тебе очікує велика порція щастя та посмішок.",
-  "Твоє найзаповітніше бажання здійсниться найближчим часом.",
-  "Зірки обіцяють тобі дуже світлий та радісний період.",
-  "Шукай радість у дрібницях — це твій ключ до гармонії.",
-  "Очікуй на неймовірний приплив енергії та натхнення.",
-  "Життя готує для тебе приємний сюрприз.",
-  "Дозволь собі мріяти по-крупному, твої мрії збудуться!",
-  "Твоє серце буде сповнене тепла і любові.",
-  "Тебе чекає вихід на новий рівень у житті.",
-  "Очікуй на вигідні пропозиції, що змінять твій день.",
-  "Сприятливий час для нових починань та проєктів.",
-  "Удача буде на твоєму боці — довірся своєму розуму.",
-  "Зроби крок назустріч невідомому, на тебе чекає успіх.",
-  "Усі перешкоди легко зникнуть на твоєму шляху.",
-  "Час для великих звершень та сміливих рішень.",
-  "Твої старання нарешті принесуть заслужені плоди.",
-  "Нові знайомства принесуть несподівану користь.",
-  "Відкрий двері для нових можливостей.",
-  "Хтось дуже сильно чекає на зустріч з тобою.",
-  "На тебе чекає романтична пригода.",
-  "Поділися теплом, і воно повернеться до тебе сторицею.",
-  "У твоєму домі пануватимуть затишок та злагода.",
-  "Зустріч, яка здасться випадковою, змінить твоє життя.",
-  "Незабаром на тебе чекає чудова подорож.",
-  "Пакуй валізи, попереду поїздка твоєї мрії!",
-  "Зміни обстановку — це принесе тобі нові ідеї.",
-  "Готуйся до захопливих пригод та яскравих емоцій.",
-  "Чекай веселої звістки, яка покращить настрій.",
-  "Сьогодні Всесвіт на твоєму боці — сміливо загадуй бажання.",
-  "Скоро станеться щось дивовижне і прекрасне.",
-  "Диво поруч, просто озирнися навколо.",
-  "Твої креативні ідеї приведуть до неймовірних результатів."
-];
-async function loadServices() {
-
-    const res =
-        await fetch(
-            "/api/services"
-        );
-
-    services =
-        await res.json();
-
-    const container =
-        document.getElementById(
-            "servicesList"
-        );
-
-    container.innerHTML = "";
-
-    services.forEach(service => {
-
-        container.innerHTML += `
-            <button
-            onclick="selectService('${service.name} - ${service.price} грн')">
-                ${service.name} — ${service.price} грн
-            </button>
-        `;
-    });
-}
-
-renderCalendar();
-loadServices();

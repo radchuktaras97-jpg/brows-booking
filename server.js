@@ -1,4 +1,5 @@
 require("dotenv").config();
+process.env.NODE_OPTIONS = "--dns-result-order=ipv4first";
 
 const express = require("express");
 const mongoose = require("mongoose");
