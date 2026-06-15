@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brows Admin</title>
+<link rel="stylesheet" href="style1.css">
+
+<script>
+const auth = sessionStorage.getItem("adminAuth");
+
+if(auth !== "true"){
+    location.href = "login.html";
+}
+</script>
+</head>
+<body>
+
+<div class="admin-header">
+    <img src="logo.png" class="admin-logo" alt="Logo">
+
+    <div class="admin-title">
+        Адмін-панель
+    </div>
+
+    <button
+        class="other-btn"
+        onclick="location.href='other.html'">
+        Інше
+    </button>
+</div>
+
+<div class="container">
+   
+<div class="admin-layout">
+
+    <!-- КАЛЕНДАРЬ -->
+    <div class="left">
+
+            <div class="calendar-header">
+
+                <button onclick="prevMonth()">‹</button>
+
+                <div id="monthLabel"></div>
+
+                <button onclick="nextMonth()">›</button>
+
+            </div>
+
+            <div
+                class="calendar-days"
+                id="calendarDays">
+            </div>
+
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА -->
+        <div class="right">
+
+            <h2 id="selectedDateTitle">
+                Оберіть день
+            </h2>
+
+            <h3>📅 Записи</h3>
+            <div id="dayBookings"></div>
+
+            <hr>
+
+
+            <h3>⏰ Статус часу</h3>
+            <div id="dayBusy"></div>
+
+
+            <hr>
+
+
+            <h3>⛔ Блокування</h3>
+            <div id="dayBlocks"></div>
+
+
+
+
+
+            
+
+            
+
+            
+            
+
+            
+
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<div class="login-box">
+
+    <img src="logo.png" class="admin-logo">
+
+    <h2>Адмін-панель</h2>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Пароль"
+        onkeydown="if(event.key==='Enter') login()">
+
+    <button onclick="login()">Увійти</button>
+
+    <div id="error" style="color:red;margin-top:10px;"></div>
+
+</div>
+
+<script>
+async function login(){
+
+    const pass = document.getElementById("password").value.trim();
+    const error = document.getElementById("error");
+
+    error.textContent = "";
+
+    if(!pass){
+        error.textContent = "Введіть пароль";
+        return;
+    }
+
+    try {
+
+        const res = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                password: pass
+            })
+        });
+
+        const data = await res.json();
+
+        if(data.success){
+
+            sessionStorage.setItem("adminAuth", "true");
+            sessionStorage.setItem("token", data.token);
+
+            location.href = "admin.html";
+
+        } else {
+            error.textContent = "Невірний пароль";
+        }
+
+    } catch (e) {
+        error.textContent = "Сервер недоступний";
+    }
+}
+</script>
+
+</body>
+</html>

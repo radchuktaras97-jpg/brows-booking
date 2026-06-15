@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Інше</title>
+<link rel="stylesheet" href="style1.css">
+
+<script>
+if (
+    sessionStorage.getItem("adminAuth")
+    !== "true"
+){
+    location.href = "login.html";
+}
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="admin-header">
+
+<img src="logo.png" class="admin-logo">
+
+<div class="admin-title">
+Адмін-панель
+</div>
+
+<button
+onclick="location.href='admin.html'">
+
+← Назад
+
+</button>
+
+</div>
+
+<div class="menu-grid">
+
+<button onclick="openClients()">
+📋 Клієнти
+</button>
+
+<button onclick="openServices()">
+💅 Послуги
+</button>
+
+<button onclick="openStats()">
+📊 Статистика
+</button>
+
+<button onclick="logout()">
+🚪 Вийти
+</button>
+
+</div>
+
+<div id="content"></div>
+
+</div>
+
+<script src="other.js"></script>
+
+</body>
+</html>
