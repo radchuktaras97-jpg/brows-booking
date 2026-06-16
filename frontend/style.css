@@ -1,6 +1,10 @@
 /* =========================
    BASE
 ========================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
@@ -110,7 +114,7 @@ body::before {
 
 /* ICON STYLE */
 .icon {
-  font-size: 13px;
+  font-size: 13px; 
   opacity: 0.9;
 }
 
@@ -118,9 +122,11 @@ body::before {
    LUX CARD SYSTEM
 ========================= */
 .lux-card {
+  width: calc(100% - 32px);
   max-width: 420px;
-  margin: 40px auto;
-  padding: 25px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;;
 
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(214,178,94,0.2);
@@ -203,6 +209,7 @@ button:hover::before {
 ========================= */
 input {
   width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   margin: 8px 0;
 
@@ -322,4 +329,51 @@ input:focus {
 
 #timeBlock {
   text-align: center;
+}
+@media (max-width: 768px) {
+
+  .logo-center {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .client-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .contacts-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contacts-bottom a {
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .lux-card {
+    width: calc(100% - 20px);
+    padding: 15px;
+  }
+
+  .calendar-days {
+    gap: 3px;
+  }
+
+  .calendar-days div {
+    padding: 8px 2px;
+    font-size: 13px;
+  }
+
+  .time button {
+    width: 100%;
+    min-width: 0;
+    margin: 6px 0;
+  }
+
+  button,
+  input {
+    font-size: 16px;
+  }
 }
