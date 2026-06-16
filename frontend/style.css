@@ -234,9 +234,9 @@ input:focus {
 ========================= */
 .calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
+  gap: 12px;
   margin-bottom: 15px;
 }
 
@@ -376,4 +376,9 @@ input:focus {
   input {
     font-size: 16px;
   }
+}
+.calendar-header button:first-child {
+  width: auto;
+  padding: 8px 12px;
+  white-space: nowrap;
 }

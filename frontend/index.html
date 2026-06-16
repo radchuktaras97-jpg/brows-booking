@@ -54,6 +54,7 @@
 <!-- CALENDAR -->
 <div class="date lux-card" id="dateBlock" style="display:none;">
   <div class="calendar-header">
+    <button onclick="backToServices()">Назад</button>
     <button onclick="prevMonth()">‹</button>
     <div id="monthLabel"></div>
     <button onclick="nextMonth()">›</button>
@@ -64,7 +65,11 @@
  
 <!-- TIME -->
 <div class="time lux-card" id="timeBlock" style="display:none;">
-  <h2 class="lux-title">Оберіть час</h2>
+
+  <div class="time-header">
+    <button class="back-btn" onclick="backToCalendar()">Назад</button>
+    <h2 class="lux-title">Оберіть час</h2>
+  </div>
 
   <button onclick="selectTimeAndNext('08:00')">08:00</button>
   <button onclick="selectTimeAndNext('09:00')">09:00</button>
