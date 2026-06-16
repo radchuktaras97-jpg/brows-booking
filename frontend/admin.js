@@ -70,6 +70,13 @@ function renderCalendar() {
         div.classList.add("day");
         div.textContent = day;
 
+        const thisDate = new Date(year, month, day);
+        const shift = getShiftType(thisDate);
+
+        if (shift === "EVENING") {
+            div.classList.add("evening-shift");
+        }
+
         if (
             day === today.getDate() &&
             month === today.getMonth() &&
@@ -209,12 +216,26 @@ function renderTimes(bookings, dayBlocks) {
 
     container.innerHTML = "";
 
-    const times = [
-        "08:00","09:00","10:00","11:00",
-        "12:00","13:00","14:00","15:00",
-        "16:00","17:00","18:00",
-        "19:30","20:30","21:30","22:30"
-    ];
+    // защита: если дата не выбрана
+    if (!selectedDate) return;
+
+    let times = [];
+
+    const shift = getShiftType(new Date(selectedDate));
+
+    // 3 дня полный день / 3 дня вечер
+    if (shift === "FULL") {
+        times = [
+            "08:00","09:00","10:00","11:00",
+            "12:00","13:00","14:00","15:00",
+            "16:00","17:00","18:00",
+            "19:30","20:30","21:30","22:30"
+        ];
+    } else {
+        times = [
+            "19:30","20:30","21:30","22:30"
+        ];
+    }
 
     times.forEach(time => {
 
@@ -225,45 +246,35 @@ function renderTimes(bookings, dayBlocks) {
         div.classList.add("block");
 
         if (bookingExists) {
+            div.textContent = 🔴 ${time} — занято;
 
-            div.textContent = `🔴 ${time} — занято`;
-
-        } 
-        else if (blockExists) {
-
-            div.textContent = `🚫 ${time} — заблокировано`;
+        } else if (blockExists) {
+            div.textContent = 🚫 ${time} — заблокировано;
 
             const btn = document.createElement("button");
             btn.textContent = "Разблокировать";
 
             btn.onclick = async () => {
-
-                await fetch(
-                    `/api/blocks/${selectedDate}/${time}`,
-                    {
-                        method: "DELETE"
-                    }
-                );
+                await fetch(`/api/blocks/${selectedDate}/${time}`, {
+                    method: "DELETE"
+                });
 
                 loadDayData();
             };
 
             div.appendChild(btn);
 
-        } 
-        else {
-
-            div.textContent = `🟢 ${time} — свободно`;
+        } else {
+            div.textContent = 🟢 ${time} — свободно;
 
             const btn = document.createElement("button");
             btn.textContent = "Блокировать";
 
             btn.onclick = async () => {
-
                 await fetch("/api/blocks", {
                     method: "POST",
                     headers: {
-                        "Content-Type":"application/json"
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
                         date: selectedDate,
@@ -299,6 +310,18 @@ async function deleteBlock(date, time) {
     );
 
     loadDayData();
+}
+function getShiftType(date) {
+    const start = new Date("2026-01-01");
+    const diffDays = Math.floor((date - start) / (1000 * 60 * 60 * 24));
+
+    const cycle = diffDays % 6;
+
+    if (cycle >= 0 && cycle <= 2) {
+        return "FULL"; // 3 дня полный день
+    } else {
+        return "EVENING"; // 3 дня только вечер
+    }
 }
 
 /* =========================
