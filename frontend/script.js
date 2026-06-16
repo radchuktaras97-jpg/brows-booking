@@ -298,4 +298,4 @@ async function loadServices() {
 }
 
 renderCalendar();
-loadServices();n
+loadServices();
