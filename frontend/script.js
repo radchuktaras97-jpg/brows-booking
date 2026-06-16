@@ -297,15 +297,5 @@ async function loadServices() {
     });
 }
 
-function backToServices() {
-  document.getElementById("dateBlock").style.display = "none";
-  document.getElementById("services").style.display = "block";
-}
-
-function backToCalendar() {
-  document.getElementById("timeBlock").style.display = "none";
-  document.getElementById("dateBlock").style.display = "block";
-}
-
 renderCalendar();
 loadServices();
