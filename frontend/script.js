@@ -306,6 +306,9 @@ function backToCalendar() {
   document.getElementById("timeBlock").style.display = "none";
   document.getElementById("dateBlock").style.display = "block";
 }
-
+function backToTime() {
+  document.getElementById("userBlock").style.display = "none";
+  document.getElementById("timeBlock").style.display = "block";
+}
 renderCalendar();
 loadServices();
