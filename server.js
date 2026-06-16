@@ -171,8 +171,6 @@ app.delete("/api/bookings/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
-    console.log("DELETE ID:", id);
-
     await db.collection("bookings").deleteOne({
       _id: new ObjectId(id)
     });
@@ -180,11 +178,8 @@ app.delete("/api/bookings/:id", async (req, res) => {
     res.json({ success: true });
 
   } catch (err) {
-    console.error("DELETE ERROR:", err);
-
-    res.status(500).json({
-      error: err.message
-    });
+    console.error(err);
+    res.status(500).json({ error: err.message });
   }
 });
 // =========================
