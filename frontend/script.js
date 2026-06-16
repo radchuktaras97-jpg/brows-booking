@@ -22,41 +22,37 @@ async function loadServices() {
   const container = document.getElementById("servicesList");
   container.innerHTML = "";
 
-  try {
-    const res = await fetch("/api/services");
-    const data = await res.json();
+  const res = await fetch("/api/services");
+  const data = await res.json();
 
-    console.log("SERVICES:", data);
+  data.forEach(service => {
 
-    if (!data || data.length === 0) {
-      container.innerHTML = "<p>Немає послуг</p>";
-      return;
-    }
+    const item = document.createElement("div");
+    item.className = "service";
 
-    data.forEach(service => {
-      const btn = document.createElement("button");
+    item.innerHTML = `
+      <div class="service-left">
+        <div class="service-icon"></div>
+        <div class="service-text">
+          <div class="service-name">${service.name}</div>
+          <div class="service-price">${service.price} грн</div>
+        </div>
+      </div>
 
-      btn.innerText = `${service.name} — ${service.price} грн`;
+      <div class="arrow">›</div>
+    `;
 
-      btn.addEventListener("click", () => {
-        console.log("CLICK WORKS");
+    item.onclick = () => {
+      selectedService = `${service.name} - ${service.price} грн`;
 
-        selectedService = `${service.name} - ${service.price} грн`;
+      document.getElementById("services").style.display = "none";
+      document.getElementById("dateBlock").style.display = "block";
 
-        document.getElementById("services").style.display = "none";
-        document.getElementById("dateBlock").style.display = "block";
+      renderCalendar();
+    };
 
-        renderCalendar();
-      });
-
-      container.appendChild(btn);
-    });
-
-  } catch (err) {
-    console.error("SERVICE ERROR:", err);
-
-    container.innerHTML = "<p style='color:red'>Ошибка загрузки услуг</p>";
-  }
+    container.appendChild(item);
+  });
 }
 
 /* =========================
