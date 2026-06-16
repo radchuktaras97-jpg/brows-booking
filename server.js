@@ -166,6 +166,20 @@ app.delete("/api/blocks/:date/:time", async (req, res) => {
     res.status(500).json({ error: "block delete error" });
   }
 });
+app.delete("/api/bookings/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    await db.collection("bookings").deleteOne({
+      _id: new ObjectId(id)
+    });
+
+    res.json({ success: true });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "delete failed" });
+  }
+});
 // =========================
 // BUSY TIMES
 // =========================
