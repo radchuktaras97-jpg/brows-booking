@@ -270,8 +270,7 @@ app.get("/api/clients", async (req, res) => {
 
   app.get("/api/services", async (req, res) => {
 
-    const services =
-        await Service.find();
+    const services = await Service.find();
 
     res.json(services);
 
