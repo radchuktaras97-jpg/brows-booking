@@ -1,7 +1,6 @@
 require("dotenv").config();
 process.env.NODE_OPTIONS = "--dns-result-order=ipv4first";
 
-const { ObjectId } = require("mongodb");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -171,9 +170,7 @@ app.delete("/api/bookings/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
-    await db.collection("bookings").deleteOne({
-      _id: new ObjectId(id)
-    });
+    await Booking.findByIdAndDelete(id);
 
     res.json({ success: true });
 
