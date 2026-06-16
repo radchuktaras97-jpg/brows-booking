@@ -233,13 +233,18 @@ input:focus {
    CALENDAR
 ========================= */
 .calendar-header {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
   margin-bottom: 15px;
 }
-
+.calendar-header .back-btn {
+  position: absolute;
+  left: 0;
+  width: auto;
+  padding: 8px 12px;
+}
 .calendar-header button {
   width: 40px;
   height: 40px;
