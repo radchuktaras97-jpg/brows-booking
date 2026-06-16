@@ -263,3 +263,62 @@ button{
         margin-top:15px;
     }
 }
+/* ВЕСЬ ЭКРАН ТЕЛЕФОНА */
+.main-screen{
+    min-height:100vh;
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-sizing:border-box;
+    padding:20px;
+}
+
+/* Блок услуг на всю ширину */
+.services{
+    width:100%;
+    max-width:100%;
+}
+
+/* Карточки тоже на всю ширину */
+.lux-card{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+}
+
+/* Список услуг */
+#servicesList{
+    width:100%;
+}
+
+/* Кнопки услуг */
+#servicesList button{
+    width:100%;
+    height:60px;
+
+    font-size:18px;
+    margin:12px 0;
+}
+
+/* Логотип больше */
+.client-logo{
+    width:140px;
+    height:140px;
+}
+
+/* Название крупнее */
+.logo-center{
+    font-size:42px;
+    text-align:center;
+    line-height:1;
+}
+
+/* Контакты красиво по центру */
+.contacts-bottom{
+    width:100%;
+    justify-content:center;
+}
