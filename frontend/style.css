@@ -403,3 +403,19 @@ input:focus {
 .time-header .lux-title {
   margin: 0;
 }
+.user-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.user-header .back-btn {
+  position: absolute;
+  left: 0;
+  width: auto;
+  padding: 8px 12px;
+}
+.user-header .lux-title {
+  margin: 0;
+}
