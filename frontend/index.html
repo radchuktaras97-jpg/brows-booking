@@ -1,122 +1,103 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <title>Brows Oleksandra</title>
-
-  <!-- ШРИФТ -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css?v=999">
-</head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 
-<!-- HERO -->
-<div class="hero">
+  <div class="app">
 
-  <div class="hero-inner">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-inner">
 
-    <img src="logo.png" class="hero-logo">
+        <img src="logo.png" class="hero-logo">
 
-    <div class="hero-title">BROWS OLEKSANDRA</div>
+        <div class="hero-title">BROWS OLEKSANDRA</div>
 
-    <div class="hero-contacts">
+        <div class="hero-contacts">
 
-      <a href="tel:+380678893907" class="contact pill">
-        <span>📞</span>
-        +380678893907
-      </a>
+          <a href="tel:+380678893907" class="contact">
+            <span>📞</span>
+            +380678893907
+          </a>
 
-      <a href="https://instagram.com" class="contact">
-        <span>📷</span>
-        Instagram
-      </a>
+          <a href="https://instagram.com" class="contact">
+            <span>📷</span>
+            Instagram
+          </a>
 
-      <a href="https://t.me" class="contact">
-        <span>✈</span>
-        Telegram
-      </a>
+          <a href="https://t.me" class="contact">
+            <span>✈</span>
+            Telegram
+          </a>
 
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="services-card">
+      <h2>Оберіть послугу</h2>
+      <div class="divider"></div>
+      <div id="servicesList"></div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="date lux-card" id="dateBlock" style="display:none;">
+      <div class="calendar-header">
+        <button onclick="prevMonth()">‹</button>
+        <div id="monthLabel"></div>
+        <button onclick="nextMonth()">›</button>
+      </div>
+      <div class="calendar-days" id="calendarDays"></div>
+    </div>
+
+    <!-- TIME -->
+    <div class="time lux-card" id="timeBlock" style="display:none;">
+      <h2 class="lux-title">Оберіть час</h2>
+
+      <div class="timeButtons">
+        <button onclick="selectTimeAndNext('08:00')">08:00</button>
+        <button onclick="selectTimeAndNext('09:00')">09:00</button>
+        <button onclick="selectTimeAndNext('10:00')">10:00</button>
+        <button onclick="selectTimeAndNext('11:00')">11:00</button>
+        <button onclick="selectTimeAndNext('12:00')">12:00</button>
+        <button onclick="selectTimeAndNext('13:00')">13:00</button>
+        <button onclick="selectTimeAndNext('14:00')">14:00</button>
+        <button onclick="selectTimeAndNext('15:00')">15:00</button>
+        <button onclick="selectTimeAndNext('16:00')">16:00</button>
+        <button onclick="selectTimeAndNext('17:00')">17:00</button>
+        <button onclick="selectTimeAndNext('18:00')">18:00</button>
+        <button onclick="selectTimeAndNext('19:30')">19:30</button>
+        <button onclick="selectTimeAndNext('20:30')">20:30</button>
+        <button onclick="selectTimeAndNext('21:30')">21:30</button>
+        <button onclick="selectTimeAndNext('22:30')">22:30</button>
+      </div>
+    </div>
+
+    <!-- USER -->
+    <div class="user lux-card" id="userBlock" style="display:none;">
+      <h2 class="lux-title">Ваші дані</h2>
+
+      <input id="name" placeholder="Ваше ім’я">
+      <input id="phone" placeholder="Ваш телефон">
+
+      <button onclick="confirmBooking()">Підтвердити запис</button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success lux-card" id="successBlock" style="display:none;">
+      <h2 class="lux-title">💅 Запис підтверджено</h2>
+
+      <p id="successText"></p>
+
+      <button id="wishBtn" onclick="showWish()">✨ Побажання дня</button>
+      <div id="wishText" style="display:none;"></div>
+
+      <button onclick="location.reload()" id="homeBtn" style="display:none;">
+        На головну
+      </button>
     </div>
 
   </div>
 
-</div>
-
-
-<!-- SERVICES -->
-<div class="services-card">
-
-  <h2>Оберіть послугу</h2>
-
-  <div class="divider"></div>
-
-  <div id="servicesList"></div>
-
-</div>
-
-<!-- CALENDAR -->
-<div class="date lux-card" id="dateBlock" style="display:none;">
-  <div class="calendar-header">
-    <button onclick="prevMonth()">‹</button>
-    <div id="monthLabel"></div>
-    <button onclick="nextMonth()">›</button>
-  </div>
-
-  <div class="calendar-days" id="calendarDays"></div>
-</div>
- 
-<!-- TIME -->
-<div class="time lux-card" id="timeBlock" style="display:none;">
-  <h2 class="lux-title">Оберіть час</h2>
-
-  <button onclick="selectTimeAndNext('08:00')">08:00</button>
-  <button onclick="selectTimeAndNext('09:00')">09:00</button>
-  <button onclick="selectTimeAndNext('10:00')">10:00</button>
-  <button onclick="selectTimeAndNext('11:00')">11:00</button>
-  <button onclick="selectTimeAndNext('12:00')">12:00</button>
-  <button onclick="selectTimeAndNext('13:00')">13:00</button>
-  <button onclick="selectTimeAndNext('14:00')">14:00</button>
-  <button onclick="selectTimeAndNext('15:00')">15:00</button>
-  <button onclick="selectTimeAndNext('16:00')">16:00</button>
-  <button onclick="selectTimeAndNext('17:00')">17:00</button>
-  <button onclick="selectTimeAndNext('18:00')">18:00</button>
-  <button onclick="selectTimeAndNext('19:30')">19:30</button>
-  <button onclick="selectTimeAndNext('20:30')">20:30</button>
-  <button onclick="selectTimeAndNext('21:30')">21:30</button>
-  <button onclick="selectTimeAndNext('22:30')">22:30</button>
-</div>
-
-<!-- USER -->
-<div class="user lux-card" id="userBlock" style="display:none;">
-  <h2 class="lux-title">Ваші дані</h2>
-
-  <input id="name" placeholder="Ваше ім’я">
-  <input id="phone" placeholder="Ваш телефон">
-
-  <button onclick="confirmBooking()">Підтвердити запис</button>
-</div>
-
-<!-- SUCCESS -->
-<div class="success lux-card" id="successBlock" style="display:none;">
-  <h2 class="lux-title">💅 Запис підтверджено</h2>
-
-  <p id="successText"></p>
-
-  <button id="wishBtn" onclick="showWish()">✨ Побажання дня</button>
-  <div id="wishText" style="display:none;"></div>
-
-  <button onclick="location.reload()" id="homeBtn" style="display:none;">
-    На головну
-  </button>
-</div>
-
-
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
-</html>

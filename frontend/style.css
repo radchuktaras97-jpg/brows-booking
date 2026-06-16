@@ -13,9 +13,10 @@ body {
 
   display: flex;
   justify-content: center;
+  padding: 10px 0;
 }
 
-/* GLOW */
+/* GLOW BACKGROUND */
 body::before {
   content: "";
   position: fixed;
@@ -29,20 +30,26 @@ body::before {
 }
 
 /* =========================
-   MAIN WRAPPER (как iPhone)
+   APP CONTAINER
 ========================= */
-.wrapper {
+.app {
   width: 100%;
-  max-width: 430px;
+  max-width: 420px;
 }
 
 /* =========================
-   HERO (верх как на скрине)
+   COMMON BLOCK SIZE
 ========================= */
-.hero {
-  padding: 15px;
+.hero,
+.services-card,
+.lux-card {
+  width: calc(100% - 20px);
+  margin: 10px auto;
 }
 
+/* =========================
+   HERO
+========================= */
 .hero-inner {
   border-radius: 24px;
   padding: 25px 20px;
@@ -52,8 +59,8 @@ body::before {
   border: 1px solid rgba(212,175,55,0.4);
 
   box-shadow:
-    0 0 40px rgba(212,175,55,0.2),
-    inset 0 0 30px rgba(255,215,0,0.05);
+    0 0 30px rgba(212,175,55,0.2),
+    inset 0 0 20px rgba(255,215,0,0.05);
 }
 
 .hero-logo {
@@ -104,18 +111,17 @@ body::before {
 }
 
 /* =========================
-   SERVICES CARD
+   SERVICES
 ========================= */
 .services-card {
-  margin: 10px 15px;
   padding: 20px;
-
   border-radius: 24px;
 
   background: radial-gradient(circle at top, #1a1200, #000);
   border: 1px solid rgba(212,175,55,0.4);
 
-  box-shadow: 0 0 30px rgba(212,175,55,0.1);
+  box-shadow:
+    0 0 30px rgba(212,175,55,0.15);
 }
 
 .services-card h2 {
@@ -131,9 +137,7 @@ body::before {
   background: linear-gradient(90deg, transparent, gold, transparent);
 }
 
-/* =========================
-   SERVICE ITEM
-========================= */
+/* SERVICE ITEM */
 .service {
   display: flex;
   align-items: center;
@@ -165,7 +169,6 @@ body::before {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-
   background: radial-gradient(circle, gold, #000);
 }
 
@@ -189,10 +192,9 @@ body::before {
 }
 
 /* =========================
-   CALENDAR / TIME / USER
+   LUX BLOCKS (calendar/time/user)
 ========================= */
 .lux-card {
-  margin: 15px;
   padding: 20px;
 
   border-radius: 20px;
@@ -201,9 +203,14 @@ body::before {
   border: 1px solid rgba(212,175,55,0.25);
 
   backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 25px rgba(212,175,55,0.1);
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 button {
   width: 100%;
   padding: 14px;
@@ -216,6 +223,7 @@ button {
 
   color: #d6b25e;
 
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -224,7 +232,22 @@ button:hover {
   transform: scale(1.02);
 }
 
-/* INPUT */
+/* TIME GRID */
+.timeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.timeButtons button {
+  width: auto;
+  min-width: 90px;
+}
+
+/* =========================
+   INPUTS
+========================= */
 input {
   width: 100%;
   padding: 12px;
@@ -235,9 +258,24 @@ input {
 
   background: transparent;
   color: white;
+  text-align: center;
 }
 
-/* CALENDAR */
+/* =========================
+   CALENDAR
+========================= */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header button {
+  width: 40px;
+  height: 40px;
+}
+
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -250,6 +288,7 @@ input {
   border-radius: 8px;
 
   border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
 }
 
 .calendar-days div:hover {
@@ -261,7 +300,9 @@ input {
   color: black;
 }
 
-/* SUCCESS */
+/* =========================
+   SUCCESS
+========================= */
 .success {
   text-align: center;
 }
