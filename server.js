@@ -179,6 +179,10 @@ app.delete("/api/bookings/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
 // =========================
 // BUSY TIMES
 // =========================
