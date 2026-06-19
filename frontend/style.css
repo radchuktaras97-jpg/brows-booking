@@ -71,19 +71,18 @@ body::before {
 
     border-radius: 50%;
     overflow: hidden;
+
     object-fit: cover;
-    object-position: center;
 
-    border: 3px solid #d6b25e;
-
-    box-shadow:
-        0 0 0 4px rgba(214,178,94,0.25),
-        0 0 20px rgba(214,178,94,0.35),
-        0 10px 25px rgba(0,0,0,0.7);
+    border: 2px solid rgba(214,178,94,0.6);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 
     margin-bottom: 8px;
 
+    /* 🔥 ЭТО ГЛАВНОЕ — увеличивает картинку внутри */
     transform: scale(1.35);
+
+    object-position: center;
 }
 
 .client-title {
