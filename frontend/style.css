@@ -66,23 +66,19 @@ body::before {
 }
 
 .client-logo {
-    width: 150px;
-    height: 150px;
-
-    border-radius: 50%;
-    overflow: hidden;
-
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-
-    border: 2px solid rgba(214,178,94,0.6);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-
+    border-radius: 50%;
+    border: 2px solid rgba(214,178,94,0.5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     margin-bottom: 8px;
-
-    /* 🔥 ЭТО ГЛАВНОЕ — увеличивает картинку внутри */
-    transform: scale(1.35);
-
-    object-position: center;
+}
+.client-logo {
+    border: none;
+    box-shadow:
+        0 0 15px rgba(214,178,94,.5),
+        0 0 30px rgba(214,178,94,.25);
 }
 
 .client-title {
