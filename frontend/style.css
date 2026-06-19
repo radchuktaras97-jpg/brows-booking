@@ -74,13 +74,15 @@ body::before {
     object-fit: contain;
     object-position: center;
 
+    background: transparent;
+
     border: none;
+    padding: 0;
+    margin-bottom: 8px;
 
     box-shadow:
         0 0 15px rgba(214,178,94,.5),
         0 0 30px rgba(214,178,94,.25);
-
-    background: transparent;
 }
 
 .client-title {
