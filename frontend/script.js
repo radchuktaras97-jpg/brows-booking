@@ -33,7 +33,8 @@ weekDays.forEach(d => {
   daysContainer.appendChild(el);
 });
 
-  const firstDay = new Date(year, month, 1).getDay();
+ let firstDay = new Date(year, month, 1).getDay();
+  firstDay = (firstDay + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   for (let i = 0; i < firstDay; i++) {
