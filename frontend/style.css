@@ -69,7 +69,7 @@ body::before {
     width: 100px;
     height: 100px;
 
-    border-radius: 50%;
+    border-radius: 100%;
 
     object-fit: contain;
     object-position: center;
@@ -428,21 +428,4 @@ input:focus {
 }
 .user-header .lux-title {
   margin: 0;
-}
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.client-header {
-  position: relative;
-}
-
-.client-header::before {
-  content: "";
-  position: absolute;
-  inset: -60px;
-  background: radial-gradient(circle, rgba(214,178,94,0.15), transparent 60%);
-  z-index: -1;
-  filter: blur(20px);
 }
