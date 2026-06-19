@@ -68,9 +68,10 @@ body::before {
 .client-logo {
     width: 100px;
     height: 100px;
-
     object-fit: cover;
     object-position: center;
+
+    transform: scale(1.8);
 
     border-radius: 50%;
     border: none;
@@ -78,10 +79,6 @@ body::before {
     box-shadow:
         0 0 15px rgba(214,178,94,.5),
         0 0 30px rgba(214,178,94,.25);
-
-    margin-bottom: 8px;
-
-    transform: scale(1.2);
 }
 
 .client-title {
