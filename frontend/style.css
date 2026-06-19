@@ -80,7 +80,7 @@ body::before {
     margin-bottom: 8px;
 
     /* 🔥 ЭТО ГЛАВНОЕ — увеличивает картинку внутри */
-    transform: scale(1.25);
+    transform: scale(1.35);
 
     object-position: center;
 }
