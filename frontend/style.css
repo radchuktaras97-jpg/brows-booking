@@ -69,19 +69,18 @@ body::before {
     width: 100px;
     height: 100px;
 
-    object-fit: cover;
+    border-radius: 50%;
+
+    object-fit: contain;
     object-position: center;
 
-    border-radius: 50%;
     border: none;
 
     box-shadow:
         0 0 15px rgba(214,178,94,.5),
         0 0 30px rgba(214,178,94,.25);
 
-    margin-bottom: 8px;
-
-    transform: scale(1.2);
+    background: transparent;
 }
 
 .client-title {
