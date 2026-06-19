@@ -419,3 +419,7 @@ input:focus {
 .user-header .lux-title {
   margin: 0;
 }
+.client-logo {
+  background: transparent;
+  border-radius: 50%;
+}
