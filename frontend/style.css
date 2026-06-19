@@ -79,7 +79,7 @@ body::before {
     margin-bottom: 8px;
 
     /* 🔥 увеличивает саму картинку внутри */
-    transform: scale(1.15);
+    transform: scale(1.75);
 }
 
 .client-title {
