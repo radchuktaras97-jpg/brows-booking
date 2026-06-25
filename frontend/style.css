@@ -8,24 +8,9 @@
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
-  background: radial-gradient(circle at top, #0a0a0a, #000);
-  color: #d6b25e;
+  background: #F3EDE7;
+  color: #5f4631;
   overflow-x: hidden;
-}
-
-/* GOLD GLOW BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.12), transparent 45%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.05), transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(255,215,0,0.08), transparent 60%);
-
-  filter: blur(60px);
-  z-index: -1;
 }
 
 /* ===== HEADER LUX ===== */
@@ -34,28 +19,21 @@ body::before {
   flex-direction: column;
   align-items: center;
 
-  padding: 22px 15px;
+  padding: 35px 15px;
 
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(20px);
+  background: #F3EDE7;
 
-  border-bottom: 1px solid rgba(214,178,94,0.15);
+  border-bottom: 1px solid rgba(193,155,92,.25);
 }
 
 /* ===== CENTER LOGO ===== */
 .logo-center {
-  font-size: 26px;
-  letter-spacing: 3px;
-
-  color: transparent;
-  background: linear-gradient(90deg, #d6b25e, #fff, #d6b25e);
-  -webkit-background-clip: text;
-
-  margin-bottom: 15px;
-
+  font-size: 34px;
+  letter-spacing: 2px;
+  color: #6f4e37;
+  margin-bottom: 20px;
   text-transform: uppercase;
 }
-
 .client-header {
     display: flex;
     flex-direction: column;
@@ -66,8 +44,8 @@ body::before {
 }
 
 .client-logo {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
 
     border-radius: 100%;
 
@@ -81,8 +59,8 @@ body::before {
     margin-bottom: 8px;
 
     box-shadow:
-        0 0 15px rgba(214,178,94,.5),
-        0 0 30px rgba(214,178,94,.25);
+        0 8px 25px rgba(120,90,50,.12);
+        
 }
 
 .client-title {
@@ -108,7 +86,7 @@ body::before {
   text-decoration: none;
 
   font-size: 14px;
-  color: rgba(214,178,94,0.75);
+  color: #7a5b42;
 
   padding: 6px 10px;
 
@@ -133,29 +111,29 @@ body::before {
 ========================= */
 .lux-card {
   width: calc(100% - 32px);
-  max-width: 420px;
+  max-width: 460px;
+
   margin: 20px auto;
-  padding: 20px;
-  box-sizing: border-box;;
+  padding: 25px;
 
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(214,178,94,0.2);
-  border-radius: 18px;
+  background: #f8f3ee;
 
-  backdrop-filter: blur(18px);
+  border: 1px solid #d5b17b;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 28px;
+
+  box-shadow:
+      0 10px 30px rgba(0,0,0,.08);
 
   text-align: center;
 }
 
 /* TITLES */
 .lux-title {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 34px;
+  color: #6f4e37;
   letter-spacing: 1px;
-
-  margin-bottom: 18px;
+  margin-bottom: 25px;
 }
 
 /* =========================
@@ -164,31 +142,35 @@ body::before {
 button {
   font-family: 'Cormorant Garamond', serif;
 
-  padding: 12px 16px;
-  margin: 8px 0;
-
-  border-radius: 12px;
-
-  border: 1px solid rgba(214,178,94,0.3);
-  background: rgba(255,255,255,0.02);
-
-  color: #d6b25e;
-
-  cursor: pointer;
-
-  transition: 0.35s ease;
-
-  position: relative;
-  overflow: hidden;
-
   width: 100%;
+
+  padding: 18px;
+
+  margin: 10px 0;
+
+  background: #fbf7f3;
+
+  border: 1px solid #d5b17b;
+
+  border-radius: 24px;
+
+  color: #6f4e37;
+
+  font-size: 22px;
+
+  box-shadow:
+      0 4px 12px rgba(0,0,0,.05);
+
+  transition: .3s;
 }
 
 button:hover {
-  background: rgba(214,178,94,0.08);
-  border-color: #d6b25e;
+  transform: translateY(-2px);
 
-  transform: scale(1.02);
+  background: #fffaf5;
+
+  box-shadow:
+      0 10px 20px rgba(193,155,92,.18);
 }
 
 button::before {
@@ -219,19 +201,19 @@ button:hover::before {
 ========================= */
 input {
   width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  margin: 8px 0;
+  padding: 15px;
 
-  border-radius: 10px;
+  margin: 10px 0;
 
-  border: 1px solid rgba(214,178,94,0.3);
-  background: transparent;
+  background: #fff;
 
-  color: white;
+  border: 1px solid #d5b17b;
+
+  border-radius: 18px;
+
+  color: #5f4631;
+
   text-align: center;
-
-  outline: none;
 }
 
 input:focus {
@@ -290,8 +272,8 @@ input:focus {
 }
 
 .calendar-days .active {
-  background: #d6b25e;
-  color: black;
+  background: #cfa96e;
+  color: white;
 }
 
 /* =========================
@@ -428,4 +410,23 @@ input:focus {
 }
 .user-header .lux-title {
   margin: 0;
+}
+
+.bottom-decor {
+  display:flex;
+  justify-content:center;
+  margin:40px 0;
+}
+
+.bottom-decor img{
+  width:120px;
+  opacity:.8;
+}
+
+.decor-branch{
+  position:absolute;
+  left:20px;
+  top:40px;
+  width:70px;
+  opacity:.9;
 }
