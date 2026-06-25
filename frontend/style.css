@@ -244,7 +244,13 @@ input:focus {
   border-radius: 10px;
 
   background: transparent;
-  border: 1px solid rgba(214,178,94,0.3);
+  border-image: linear-gradient(
+    180deg,
+    #fff7d6,
+    #e5bc6c,
+    #b8863b,
+    #f9e8b0
+  ) 1;
 
   color: #d6b25e;
 }
