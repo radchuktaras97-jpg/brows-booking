@@ -310,32 +310,26 @@ input:focus {
 
 #wishText{
     margin-top:20px;
-    padding:15px;
 
-    font-size:24px;
+    font-size:26px;
     font-weight:700;
-    line-height:1.5;
-
-    color:#c79b4b;
-
-    text-shadow:
-        1px 1px 0 #fff6d5,
-        2px 2px 0 #e0bc72,
-        3px 3px 0 #b8863b,
-        4px 4px 8px rgba(0,0,0,.15);
 
     background:linear-gradient(
-        180deg,
-        #fff8dd 0%,
-        #f0d18b 35%,
-        #d4a24f 60%,
-        #b47b2d 100%
+      to bottom,
+      #fff9e5,
+      #f6d78d,
+      #d8aa55,
+      #b67c2c
     );
 
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
-    display:block;
+    text-shadow:
+      0 1px 0 #fff,
+      0 2px 0 rgba(255,240,190,.8),
+      0 3px 0 rgba(210,160,80,.6),
+      0 6px 12px rgba(0,0,0,.18);
 }
 /* =========================
    TIME BUTTONS
