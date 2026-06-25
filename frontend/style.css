@@ -308,13 +308,34 @@ input:focus {
   transform: scale(1);
 }
 
-#wishText {
-  margin-top: 15px;
-  font-style: italic;
+#wishText{
+    margin-top:20px;
+    padding:15px;
 
-  background: linear-gradient(90deg, gold, silver);
-  -webkit-background-clip: text;
-  color: transparent;
+    font-size:24px;
+    font-weight:700;
+    line-height:1.5;
+
+    color:#c79b4b;
+
+    text-shadow:
+        1px 1px 0 #fff6d5,
+        2px 2px 0 #e0bc72,
+        3px 3px 0 #b8863b,
+        4px 4px 8px rgba(0,0,0,.15);
+
+    background:linear-gradient(
+        180deg,
+        #fff8dd 0%,
+        #f0d18b 35%,
+        #d4a24f 60%,
+        #b47b2d 100%
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    display:block;
 }
 /* =========================
    TIME BUTTONS
