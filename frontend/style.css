@@ -8,8 +8,14 @@
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
-  background: #F3EDE7;
-  color: #5f4631;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(255,255,255,0.8),
+      rgba(248,242,232,1) 40%,
+      rgba(239,230,216,1) 100%);
+
+  color: #b8862b;
   overflow-x: hidden;
 }
 
@@ -19,21 +25,31 @@ body {
   flex-direction: column;
   align-items: center;
 
-  padding: 35px 15px;
+  padding: 22px 15px;
 
-  background: #F3EDE7;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(20px);
 
-  border-bottom: 1px solid rgba(193,155,92,.25);
+  border-bottom: 1px solid rgba(214,178,94,0.15);
 }
 
 /* ===== CENTER LOGO ===== */
 .logo-center {
-  font-size: 34px;
-  letter-spacing: 2px;
-  color: #6f4e37;
-  margin-bottom: 20px;
+  font-size: 28px;
+
+  letter-spacing: 4px;
+
   text-transform: uppercase;
+
+  color: #b8862b;
+
+  text-shadow:
+      0 1px 0 #fff,
+      0 2px 5px rgba(0,0,0,.15);
+
+  margin-bottom: 15px;
 }
+
 .client-header {
     display: flex;
     flex-direction: column;
@@ -44,23 +60,20 @@ body {
 }
 
 .client-logo {
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
 
-    border-radius: 100%;
-
-    object-fit: contain;
-    object-position: center;
-
-    background: transparent;
-
-    border: none;
-    padding: 0;
-    margin-bottom: 8px;
+    border-radius: 50%;
 
     box-shadow:
-        0 8px 25px rgba(120,90,50,.12);
-        
+      0 0 25px rgba(212,175,55,.4),
+      0 0 50px rgba(212,175,55,.2);
+
+    transition: .4s;
+}
+
+.client-logo:hover{
+    transform: scale(1.05);
 }
 
 .client-title {
@@ -86,7 +99,7 @@ body {
   text-decoration: none;
 
   font-size: 14px;
-  color: #7a5b42;
+  color: rgba(214,178,94,0.75);
 
   padding: 6px 10px;
 
@@ -111,66 +124,62 @@ body {
 ========================= */
 .lux-card {
   width: calc(100% - 32px);
-  max-width: 460px;
-
+  max-width: 420px;
   margin: 20px auto;
-  padding: 25px;
+  padding: 20px;
 
-  background: #f8f3ee;
+  background: rgba(255,255,255,0.7);
 
-  border: 1px solid #d5b17b;
+  border: 1px solid rgba(212,175,55,.35);
 
-  border-radius: 28px;
+  border-radius: 24px;
+
+  backdrop-filter: blur(10px);
 
   box-shadow:
-      0 10px 30px rgba(0,0,0,.08);
+      0 10px 35px rgba(0,0,0,.08),
+      inset 0 1px 0 rgba(255,255,255,.9);
 
   text-align: center;
 }
 
 /* TITLES */
 .lux-title {
-  font-size: 34px;
-  color: #6f4e37;
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 25px;
+
+  margin-bottom: 18px;
 }
 
 /* =========================
    BUTTONS (MAIN LUX STYLE)
 ========================= */
 button {
-  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(
+      180deg,
+      #fff9ef,
+      #f2dfb3
+  );
 
-  width: 100%;
+  border: 1px solid #d4af37;
 
-  padding: 18px;
+  color: #9c6b15;
 
-  margin: 10px 0;
-
-  background: #fbf7f3;
-
-  border: 1px solid #d5b17b;
-
-  border-radius: 24px;
-
-  color: #6f4e37;
-
-  font-size: 22px;
+  font-weight: 600;
 
   box-shadow:
-      0 4px 12px rgba(0,0,0,.05);
+      0 5px 15px rgba(212,175,55,.25),
+      inset 0 1px 0 rgba(255,255,255,.8);
 
-  transition: .3s;
+  border-radius: 14px;
 }
 
 button:hover {
-  transform: translateY(-2px);
+  background: rgba(214,178,94,0.08);
+  border-color: #d6b25e;
 
-  background: #fffaf5;
-
-  box-shadow:
-      0 10px 20px rgba(193,155,92,.18);
+  transform: scale(1.02);
 }
 
 button::before {
@@ -201,19 +210,19 @@ button:hover::before {
 ========================= */
 input {
   width: 100%;
-  padding: 15px;
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 8px 0;
 
-  margin: 10px 0;
+  border-radius: 10px;
 
-  background: #fff;
+  border: 1px solid rgba(214,178,94,0.3);
+  background: transparent;
 
-  border: 1px solid #d5b17b;
-
-  border-radius: 18px;
-
-  color: #5f4631;
-
+  color: white;
   text-align: center;
+
+  outline: none;
 }
 
 input:focus {
@@ -244,13 +253,7 @@ input:focus {
   border-radius: 10px;
 
   background: transparent;
-  border-image: linear-gradient(
-    180deg,
-    #fff7d6,
-    #e5bc6c,
-    #b8863b,
-    #f9e8b0
-  ) 1;
+  border: 1px solid rgba(214,178,94,0.3);
 
   color: #d6b25e;
 }
@@ -278,8 +281,8 @@ input:focus {
 }
 
 .calendar-days .active {
-  background: #cfa96e;
-  color: white;
+  background: #d6b25e;
+  color: black;
 }
 
 /* =========================
@@ -308,28 +311,13 @@ input:focus {
   transform: scale(1);
 }
 
-#wishText{
-    margin-top:20px;
+#wishText {
+  margin-top: 15px;
+  font-style: italic;
 
-    font-size:26px;
-    font-weight:700;
-
-    background:linear-gradient(
-      to bottom,
-      #fff9e5,
-      #f6d78d,
-      #d8aa55,
-      #b67c2c
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:
-      0 1px 0 #fff,
-      0 2px 0 rgba(255,240,190,.8),
-      0 3px 0 rgba(210,160,80,.6),
-      0 6px 12px rgba(0,0,0,.18);
+  background: linear-gradient(90deg, gold, silver);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 /* =========================
    TIME BUTTONS
@@ -433,21 +421,20 @@ input:focus {
   margin: 0;
 }
 
-.bottom-decor {
-  display:flex;
-  justify-content:center;
-  margin:40px 0;
+.lux-title,
+.logo-center {
+  color: #b8862b;
+
+  text-shadow:
+      0 1px 0 #fff,
+      0 2px 3px rgba(0,0,0,.1),
+      0 6px 12px rgba(212,175,55,.15);
+}
+.lux-card::before{
+    background-image:url("gold-branch.png");
 }
 
-.bottom-decor img{
-  width:120px;
-  opacity:.8;
-}
-
-.decor-branch{
-  position:absolute;
-  left:20px;
-  top:40px;
-  width:70px;
-  opacity:.9;
+.lux-card::after{
+    background-image:url("gold-branch.png");
+    transform:rotate(180deg);
 }
