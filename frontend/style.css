@@ -337,7 +337,7 @@ input:focus {
 
   text-align: center;
 
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(136, 109, 3, 0);
 
   cursor: pointer;
   transition: 0.2s;
