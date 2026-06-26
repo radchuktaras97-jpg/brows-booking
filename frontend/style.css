@@ -348,8 +348,8 @@ input:focus {
 }
 
 .calendar-days .active {
-  background: #d6b25e;
-  color: black;
+  background: #e9a60b;
+  color: rgb(238, 222, 5);
 }
 
 /* =========================
