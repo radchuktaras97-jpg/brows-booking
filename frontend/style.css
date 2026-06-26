@@ -13,20 +13,6 @@ body {
   background: #f5eee5;
 }
 
-/* GOLD GLOW BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background:
-    radial-gradient(circle at 20% 30%, rgba(212,175,55,.03), transparent 35%),
-    radial-gradient(circle at 80% 70%, rgba(212,175,55,.03), transparent 35%),
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,.4), transparent 60%);
-
-  z-index: -1;
-}
 
 /* ===== HEADER LUX ===== */
 .top-bar {
@@ -37,7 +23,7 @@ body::before {
   padding: 22px 15px;
 
   background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(3px);
 
   border-bottom: 1px solid rgba(214,178,94,0.15);
 }
@@ -81,8 +67,8 @@ body::before {
     margin-bottom: 8px;
 
     box-shadow:
-        0 0 15px rgba(214,178,94,.5),
-        0 0 30px rgba(214,178,94,.25);
+    0 5px 15px rgba(184,138,47,.25);
+      
 }
 
 .client-title {
@@ -142,9 +128,11 @@ body::before {
   border: 1px solid rgba(214,178,94,0.2);
   border-radius: 18px;
 
-  backdrop-filter: blur(18px);
+  backdrop-filter:none;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow:
+  0 8px 20px rgba(0,0,0,.15),
+  0 2px 8px rgba(184,138,47,.15);
 
   text-align: center;
 }
@@ -324,8 +312,17 @@ input:focus {
   margin-top: 15px;
   font-style: italic;
 
-  background: linear-gradient(90deg, gold, silver);
+  background: linear-gradient(
+    180deg,
+    #fff4b5 0%,
+    #e6c76d 30%,
+    #c79b38 60%,
+    #8b6518 100%
+  );
+
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 /* =========================
