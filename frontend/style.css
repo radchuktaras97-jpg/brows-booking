@@ -32,16 +32,26 @@ body {
 .logo-center {
   font-size: 26px;
   letter-spacing: 3px;
+  text-transform: uppercase;
 
-  color: transparent;
-  background: linear-gradient(90deg, #d6b25e, #fff, #d6b25e);
+  background: linear-gradient(
+    180deg,
+    #fff4c2 0%,
+    #e6c76d 25%,
+    #c79b38 55%,
+    #8b6518 100%
+  );
+
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+      0 1px 1px rgba(255,255,255,.2),
+      0 2px 5px rgba(139,101,24,.25);
 
   margin-bottom: 15px;
-
-  text-transform: uppercase;
 }
-
 .client-header {
     display: flex;
     flex-direction: column;
