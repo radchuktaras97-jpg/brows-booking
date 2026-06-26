@@ -8,9 +8,14 @@
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
-  background: radial-gradient(circle at top, #0a0a0a, #000);
-  color: #d6b25e;
+  color: #b88a2f;
   overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(255,255,255,0.9) 0%,
+      rgba(250,245,238,1) 35%,
+      rgba(243,235,225,1) 100%);
 }
 
 /* GOLD GLOW BACKGROUND */
