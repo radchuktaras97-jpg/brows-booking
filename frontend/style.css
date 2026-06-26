@@ -344,7 +344,7 @@ input:focus {
 }
 
 .calendar-days div:hover {
-  background: rgba(214,178,94,0.1);
+  background: rgba(215, 164, 45, 0.1);
 }
 
 .calendar-days .active {
