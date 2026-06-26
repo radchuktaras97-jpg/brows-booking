@@ -54,9 +54,9 @@ body {
     background-clip: text;
 
      text-shadow:
-        0 1px 0 rgba(212, 139, 13, 0.526),
+        0 1px 0 rgba(197, 129, 10, 0.559),
         0 2px 2px rgb(255, 255, 255),
-        0 3px 8px rgba(127, 94, 26, 0.551);
+        0 3px 8px rgba(127, 93, 26, 0);
 }
 
 .client-header {
