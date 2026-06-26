@@ -299,17 +299,30 @@ input:focus {
   padding: 8px 12px;
 }
 .calendar-header button {
-  width: 40px;
-  height: 40px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
 
-  border-radius: 10px;
+    border-radius: 8px;
 
-  background: transparent;
-  border: 1px solid rgba(214,178,94,0.3);
+    background: rgba(255,255,255,0.45);
+    border: 1px solid rgba(214,178,94,0.25);
 
-  color: #d6b25e;
+    color: #c7961f;
+    font-size: 18px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: .3s;
 }
-
+ .calendar-header .back-btn {
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+}
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
