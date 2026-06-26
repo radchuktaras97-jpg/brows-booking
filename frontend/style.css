@@ -430,11 +430,3 @@ input:focus {
       0 2px 3px rgba(0,0,0,.1),
       0 6px 12px rgba(212,175,55,.15);
 }
-.lux-card::before{
-    background-image:url("gold-branch.png");
-}
-
-.lux-card::after{
-    background-image:url("gold-branch.png");
-    transform:rotate(180deg);
-}
