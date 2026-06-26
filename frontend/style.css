@@ -8,15 +8,24 @@
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  color: #d6b25e;
+  overflow-x: hidden;
+}
+
+/* GOLD GLOW BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
 
   background:
-    radial-gradient(circle at top,
-      rgba(255,255,255,0.8),
-      rgba(248,242,232,1) 40%,
-      rgba(239,230,216,1) 100%);
+    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.12), transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.05), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(255,215,0,0.08), transparent 60%);
 
-  color: #b8862b;
-  overflow-x: hidden;
+  filter: blur(60px);
+  z-index: -1;
 }
 
 /* ===== HEADER LUX ===== */
@@ -35,19 +44,16 @@ body {
 
 /* ===== CENTER LOGO ===== */
 .logo-center {
-  font-size: 28px;
+  font-size: 26px;
+  letter-spacing: 3px;
 
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
-
-  color: #b8862b;
-
-  text-shadow:
-      0 1px 0 #fff,
-      0 2px 5px rgba(0,0,0,.15);
+  color: transparent;
+  background: linear-gradient(90deg, #d6b25e, #fff, #d6b25e);
+  -webkit-background-clip: text;
 
   margin-bottom: 15px;
+
+  text-transform: uppercase;
 }
 
 .client-header {
@@ -60,20 +66,23 @@ body {
 }
 
 .client-logo {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
 
-    border-radius: 50%;
+    border-radius: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: transparent;
+
+    border: none;
+    padding: 0;
+    margin-bottom: 8px;
 
     box-shadow:
-      0 0 25px rgba(212,175,55,.4),
-      0 0 50px rgba(212,175,55,.2);
-
-    transition: .4s;
-}
-
-.client-logo:hover{
-    transform: scale(1.05);
+        0 0 15px rgba(214,178,94,.5),
+        0 0 30px rgba(214,178,94,.25);
 }
 
 .client-title {
@@ -127,18 +136,15 @@ body {
   max-width: 420px;
   margin: 20px auto;
   padding: 20px;
+  box-sizing: border-box;;
 
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(214,178,94,0.2);
+  border-radius: 18px;
 
-  border: 1px solid rgba(212,175,55,.35);
+  backdrop-filter: blur(18px);
 
-  border-radius: 24px;
-
-  backdrop-filter: blur(10px);
-
-  box-shadow:
-      0 10px 35px rgba(0,0,0,.08),
-      inset 0 1px 0 rgba(255,255,255,.9);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 
   text-align: center;
 }
@@ -156,28 +162,33 @@ body {
    BUTTONS (MAIN LUX STYLE)
 ========================= */
 button {
-  background: linear-gradient(
-      180deg,
-      #fff9ef,
-      #f2dfb3
-  );
+  font-family: 'Cormorant Garamond', serif;
 
-  border: 1px solid #d4af37;
+  padding: 12px 16px;
+  margin: 8px 0;
 
-  color: #9c6b15;
+  border-radius: 12px;
 
-  font-weight: 600;
+  border: 1px solid rgba(214,178,94,0.3);
+  background: rgba(255,255,255,0.02);
 
-  box-shadow:
-      0 5px 15px rgba(212,175,55,.25),
-      inset 0 1px 0 rgba(255,255,255,.8);
+  color: #d6b25e;
 
-  border-radius: 14px;
+  cursor: pointer;
+
+  transition: 0.35s ease;
+
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
 }
 
 button:hover {
   background: rgba(214,178,94,0.08);
   border-color: #d6b25e;
+
+  transform: scale(1.02);
 }
 
 button::before {
@@ -417,14 +428,4 @@ input:focus {
 }
 .user-header .lux-title {
   margin: 0;
-}
-
-.lux-title,
-.logo-center {
-  color: #b8862b;
-
-  text-shadow:
-      0 1px 0 #fff,
-      0 2px 3px rgba(0,0,0,.1),
-      0 6px 12px rgba(212,175,55,.15);
 }
