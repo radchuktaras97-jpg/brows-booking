@@ -539,3 +539,34 @@ input:focus {
   background: url("gold-branch.png") center/contain no-repeat;
   transform: rotate(180deg);
 }
+.service-name{
+    display:block;
+    font-size:28px;
+    font-weight:700;
+    line-height:1.1;
+}
+
+.service-desc{
+    display:block;
+    margin-top:5px;
+
+    font-size:15px;
+    font-weight:500;
+
+    color:#9b7a2c;
+    opacity:.85;
+}
+
+.service-price{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:22px;
+    font-weight:700;
+
+    color:#d4af37;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.3);
+}
