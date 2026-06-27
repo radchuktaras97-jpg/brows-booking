@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  padding: 22px 15px;
+  padding: 12px 15px 18px;
 
   background: rgba(255,255,255,0.02);
   backdrop-filter: blur(3px);
@@ -69,8 +69,8 @@ body {
 }
 
 .client-logo {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 
     border-radius: 100%;
 
@@ -84,14 +84,14 @@ body {
     margin-bottom: 8px;
 
     box-shadow:
-    0 5px 15px rgba(184,138,47,.25);
-      
+    0 8px 20px rgba(184,138,47,.18),
+    0 0 25px rgba(214,178,94,.12);
 }
 
 .client-title {
     font-family: 'Cinzel', serif;
 
-    font-size: 72px;
+    font-size: 42px;
     font-weight: 700;
     letter-spacing: 4px;
     line-height: 1.1;
@@ -144,7 +144,7 @@ body {
 }
 
 .contacts-bottom a:hover {
-  color: #d6b25e;
+  color: #c79b38;
   transform: translateY(-2px);
 }
 
@@ -164,28 +164,36 @@ body {
   padding: 20px;
   box-sizing: border-box;;
 
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.45);
   border: 1px solid rgba(214,178,94,0.2);
   border-radius: 18px;
 
-  backdrop-filter:none;
+  backdrop-filter: blur(10px);
 
   box-shadow:
-  0 8px 20px rgba(0,0,0,.15),
-  0 2px 8px rgba(184,138,47,.15);
+  0 10px 30px rgba(0,0,0,.08),
+  0 3px 12px rgba(184,138,47,.12);
 
   text-align: center;
 }
 
 /* TITLES */
 .lux-title {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 600;
+
+  background: linear-gradient(
+      180deg,
+      #fff6c5,
+      #d7a22b,
+      #b07a14
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   letter-spacing: 1px;
-
-  margin-bottom: 18px;
 }
-
 /* =========================
    BUTTONS (MAIN LUX STYLE)
 ========================= */
@@ -202,7 +210,11 @@ button {
     border-radius: 16px;
     border: 1px solid rgba(214,178,94,.35);
 
-    background: rgba(255,255,255,.45);
+    background: linear-gradient(
+        180deg,
+        #fffdf8,
+        #f7efe3
+    );
 
     color: #c7961f;
 
@@ -216,6 +228,10 @@ button {
 
     position: relative;
     overflow: hidden;
+}
+
+button:active {
+  transform: scale(.97);
 }
 
 button:hover {
@@ -495,4 +511,30 @@ input:focus {
 }
 .user-header .lux-title {
   margin: 0;
+}
+.lux-card {
+  position: relative;
+}
+
+.lux-card::before,
+.lux-card::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  opacity: .12;
+  pointer-events: none;
+}
+
+.lux-card::before {
+  top: 10px;
+  left: 10px;
+  background: url("gold-branch.png") center/contain no-repeat;
+}
+
+.lux-card::after {
+  bottom: 10px;
+  right: 10px;
+  background: url("gold-branch.png") center/contain no-repeat;
+  transform: rotate(180deg);
 }
