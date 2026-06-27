@@ -311,5 +311,28 @@ function backToTime() {
   document.getElementById("userBlock").style.display = "none";
   document.getElementById("timeBlock").style.display = "block";
 }
+
+function openBrows() {
+
+    document.getElementById("categories").style.display = "none";
+    document.getElementById("services").style.display = "block";
+
+}
+
+function openLashes() {
+
+    document.getElementById("categories").style.display = "none";
+    document.getElementById("lashes").style.display = "block";
+
+}
+
+function backToCategories() {
+
+    document.getElementById("categories").style.display = "block";
+    document.getElementById("services").style.display = "none";
+    document.getElementById("lashes").style.display = "none";
+
+}
+
 renderCalendar();
 loadServices();

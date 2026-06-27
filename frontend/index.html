@@ -45,10 +45,47 @@
 
 </header>
 
+<!-- CATEGORY -->
+<div class="services lux-card" id="categories">
+
+  <h2 class="lux-title">Виберіть категорію</h2>
+
+  <div class="category-card" onclick="openBrows()">
+      <img src="brows.png" alt="Брови">
+  </div>
+
+  <div class="category-card" onclick="openLashes()">
+      <img src="lashes.png" alt="Вії">
+  </div>
+
+</div>
+
 <!-- SERVICES -->
-<div class="services lux-card" id="services">
+<div class="services lux-card" id="services" style="display:none;">
+
+  <button class="back-btn top-back" onclick="backToCategories()">
+      ← Назад
+  </button>
+
   <h2 class="lux-title">Оберіть послугу</h2>
+
   <div id="servicesList"></div>
+
+</div>
+
+<!-- LASHES -->
+<div class="services lux-card" id="lashes" style="display:none;">
+
+  <button class="back-btn top-back" onclick="backToCategories()">
+      ← Назад
+  </button>
+
+  <h2 class="lux-title">Вії</h2>
+
+  <p style="text-align:center;">
+      ✨ Незабаром тут з'являться послуги вій.
+  </p>
+
 </div>
 
 <!-- CALENDAR -->
