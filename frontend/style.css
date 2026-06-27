@@ -91,11 +91,11 @@ body {
 .client-title {
     font-family: 'Cinzel', serif;
 
-    font-size: 72px;
+    font-size: 30px;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     line-height: 1.1;
-    margin: 18px 0 28px;
+    margin: 14px 0 22px;
 
     background: linear-gradient(
         180deg,
@@ -191,7 +191,7 @@ body {
 ========================= */
 button {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
 
     padding: 16px 20px;
