@@ -297,6 +297,7 @@ async function loadServices() {
         `;
     });
 }
+
 function backToServices() {
   document.getElementById("dateBlock").style.display = "none";
   document.getElementById("services").style.display = "block";
