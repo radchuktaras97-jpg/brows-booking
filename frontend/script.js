@@ -289,35 +289,10 @@ async function loadServices() {
 
     services.forEach(service => {
 
-        let desc = "";
-
-        if (service.name.toLowerCase().includes("корек")) {
-            desc = "Ідеальна форма та догляд";
-        }
-
-        if (service.name.toLowerCase().includes("фарб")) {
-            desc = "Форма та насичений колір";
-        }
-
-        if (service.name.toLowerCase().includes("ламін")) {
-            desc = "Тривалий ефект укладки";
-        }
-
         container.innerHTML += `
-            <button onclick="selectService('${service.name} - ${service.price} грн')">
-
-                <span class="service-name">
-                    ${service.name}
-                </span>
-
-                <span class="service-desc">
-                    ${desc}
-                </span>
-
-                <span class="service-price">
-                    ${service.price} грн
-                </span>
-
+            <button
+            onclick="selectService('${service.name} - ${service.price} грн')">
+                ${service.name} — ${service.price} грн
             </button>
         `;
     });
