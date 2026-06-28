@@ -655,3 +655,22 @@ input:focus {
     font-size: 17px;
     color: #b88a2f;
 }
+.services-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.services-header .back-btn {
+    position: absolute;
+    left: 0;
+    width: auto;
+    padding: 8px 14px;
+    margin: 0;
+}
+
+.services-header .lux-title {
+    margin: 0;
+}
