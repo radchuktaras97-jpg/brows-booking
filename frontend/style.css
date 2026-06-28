@@ -642,7 +642,11 @@ input:focus {
     font-size: 17px;
     color: #b88a2f;
 }
-
+#servicesList button {
+    padding: 10px 16px;
+    margin: 6px 0;
+    border-radius: 12px;
+}
 .top-back {
     width: auto;
     display: inline-block;
