@@ -289,14 +289,21 @@ async function loadServices() {
 
     services.forEach(service => {
 
-        container.innerHTML += `
-            <button
-            onclick="selectService('${service.name} - ${service.price} грн')">
-                ${service.name} — ${service.price} грн
-            </button>
-        `;
-    });
-}
+    container.innerHTML += `
+        <button onclick="selectService('${service.name} - ${service.price} грн')">
+
+            <span class="service-name">
+                ${service.name}
+            </span>
+
+            <span class="service-price">
+                ${service.price} грн
+            </span>
+
+        </button>
+    `;
+});
+} 
 
 function backToServices() {
   document.getElementById("dateBlock").style.display = "none";
