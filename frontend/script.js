@@ -4,6 +4,29 @@ let selectedDate = null;
 let selectedTime = "";
 let services = [];
 
+
+
+async function loadLashes() {
+    const res = await fetch("/api/lashes");
+    const data = await res.json();
+
+    const container = document.getElementById("lashesList");
+    container.innerHTML = "";
+
+    data.forEach(item => {
+        const btn = document.createElement("button");
+
+        btn.classList.add("service-btn");
+        btn.innerText = `${item.name} — ${item.price} грн`;
+
+        btn.onclick = () => {
+            openCalendar(item); // 👈 відкриття календаря
+        };
+
+        container.appendChild(btn);
+    });
+}
+
 /* =========================
    КАЛЕНДАРЬ
 ========================= */
