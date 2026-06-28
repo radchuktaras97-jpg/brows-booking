@@ -655,22 +655,17 @@ input:focus {
     font-size: 17px;
     color: #b88a2f;
 }
-.services-header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-}
 
-.services-header .back-btn {
-    position: absolute;
-    left: 0;
+.top-back {
     width: auto;
+    display: inline-block;
+    float: left;
+    margin: 0 0 15px 0;
     padding: 8px 14px;
-    margin: 0;
 }
 
-.services-header .lux-title {
-    margin: 0;
+#services .lux-title,
+#lashes .lux-title {
+    text-align: center;
+    clear: both;
 }
