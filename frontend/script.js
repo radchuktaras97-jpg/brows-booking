@@ -3,6 +3,7 @@ let selectedService = "";
 let selectedDate = null;
 let selectedTime = "";
 let services = [];
+let currentCategory = "";
 
 
 
@@ -19,9 +20,12 @@ async function loadLashes() {
         btn.classList.add("service-btn");
         btn.innerText = `${item.name} — ${item.price} грн`;
 
-        btn.onclick = () => {
-            selectService(`${item.name} - ${item.price} грн`);
-        };
+       btn.onclick = () => {
+           selectedDate = null;
+           selectedTime = "";
+           selectService(`${item.name} - ${item.price} грн`);
+       };
+           
 
         container.appendChild(btn);
     });
@@ -125,6 +129,8 @@ function nextMonth() {
 ========================= */
 function selectService(service) {
     selectedService = service;
+    selectedDate = null;
+    selectedTime = "";
 
     document.getElementById("services").style.display = "none";
     document.getElementById("lashes").style.display = "none";
@@ -297,43 +303,38 @@ const wishes = [
   "Твої креативні ідеї приведуть до неймовірних результатів."
 ];
 async function loadServices() {
+    const res = await fetch("/api/services");
+    services = await res.json();
 
-    const res =
-        await fetch(
-            "/api/services"
-        );
-
-    services =
-        await res.json();
-
-    const container =
-        document.getElementById(
-            "servicesList"
-        );
-
+    const container = document.getElementById("servicesList");
     container.innerHTML = "";
 
     services.forEach(service => {
+        const btn = document.createElement("button");
 
-    container.innerHTML += `
-        <button onclick="selectService('${service.name} - ${service.price} грн')">
+        btn.innerHTML = `
+            <span class="service-name">${service.name}</span>
+            <span class="service-price">${service.price} грн</span>
+        `;
 
-            <span class="service-name">
-                ${service.name}
-            </span>
+        btn.onclick = () => {
+            selectedDate = null;
+            selectedTime = "";
+            selectService(`${service.name} - ${service.price} грн`);
+        };
 
-            <span class="service-price">
-                ${service.price} грн
-            </span>
-
-        </button>
-    `;
-});
-} 
-
+        container.appendChild(btn);
+    });
+}
 function backToServices() {
-  document.getElementById("dateBlock").style.display = "none";
-  document.getElementById("services").style.display = "block";
+    document.getElementById("dateBlock").style.display = "none";
+    document.getElementById("timeBlock").style.display = "none";
+
+    if (currentCategory === "lashes") {
+        document.getElementById("lashes").style.display = "block";
+    } else {
+        document.getElementById("services").style.display = "block";
+    }
 }
 
 function backToCalendar() {
@@ -346,13 +347,17 @@ function backToTime() {
 }
 
 function openBrows() {
+    currentCategory = "brows";
 
     document.getElementById("categories").style.display = "none";
     document.getElementById("services").style.display = "block";
 
+    loadServices();
 }
 
 function openLashes() {
+    currentCategory = "lashes";
+
     document.getElementById("categories").style.display = "none";
     document.getElementById("lashes").style.display = "block";
 
@@ -360,11 +365,11 @@ function openLashes() {
 }
 
 function backToCategories() {
+    currentCategory = "";
 
     document.getElementById("categories").style.display = "block";
     document.getElementById("services").style.display = "none";
     document.getElementById("lashes").style.display = "none";
-
 }
 
 document.getElementById("dateBlock").style.display = "none";
