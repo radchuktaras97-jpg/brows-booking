@@ -20,13 +20,12 @@ async function loadLashes() {
         btn.innerText = `${item.name} — ${item.price} грн`;
 
         btn.onclick = () => {
-            openCalendar(item); // 👈 відкриття календаря
+            selectService(`${item.name} - ${item.price} грн`);
         };
 
         container.appendChild(btn);
     });
 }
-
 /* =========================
    КАЛЕНДАРЬ
 ========================= */
@@ -125,10 +124,14 @@ function nextMonth() {
    SERVICE
 ========================= */
 function selectService(service) {
-  selectedService = service;
+    selectedService = service;
 
-  document.getElementById("services").style.display = "none";
-  document.getElementById("dateBlock").style.display = "block";
+    document.getElementById("services").style.display = "none";
+    document.getElementById("lashes").style.display = "none";
+
+    document.getElementById("dateBlock").style.display = "block";
+
+    renderCalendar();
 }
 
 /* =========================
@@ -350,10 +353,10 @@ function openBrows() {
 }
 
 function openLashes() {
-
     document.getElementById("categories").style.display = "none";
     document.getElementById("lashes").style.display = "block";
 
+    loadLashes();
 }
 
 function backToCategories() {
@@ -363,6 +366,10 @@ function backToCategories() {
     document.getElementById("lashes").style.display = "none";
 
 }
+
+document.getElementById("dateBlock").style.display = "none";
+document.getElementById("timeBlock").style.display = "none";
+document.getElementById("userBlock").style.display = "none";
 
 renderCalendar();
 loadServices();
