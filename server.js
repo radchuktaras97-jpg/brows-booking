@@ -10,6 +10,7 @@ const path = require("path");
 const Booking = require("./models/Booking");
 const Block = require("./models/Block");
 const Service = require("./models/Service");
+const Lash = require("./models/Lash");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -290,6 +291,13 @@ app.get("/api/clients", async (req, res) => {
     const services = await Service.find();
 
     res.json(services);
+
+});
+app.get("/api/lashes", async (req, res) => {
+
+    const lashes = await Lash.find();
+
+    res.json(lashes);
 
 });
 
