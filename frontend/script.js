@@ -270,35 +270,40 @@ const wishes = [
   "Диво поруч, просто озирнися навколо.",
   "Твої креативні ідеї приведуть до неймовірних результатів."
 ];
-async function loadServices(api, containerId) {
+async function loadServices() {
 
-    const res = await fetch(api);
+    const res =
+        await fetch(
+            "/api/services"
+        );
 
-    services = await res.json();
+    services =
+        await res.json();
 
-    const container = document.getElementById(containerId);
+    const container =
+        document.getElementById(
+            "servicesList"
+        );
 
     container.innerHTML = "";
 
     services.forEach(service => {
 
-        container.innerHTML += `
-            <button onclick="selectService('${service.name} - ${service.price} грн')">
+    container.innerHTML += `
+        <button onclick="selectService('${service.name} - ${service.price} грн')">
 
-                <span class="service-name">
-                    ${service.name}
-                </span>
+            <span class="service-name">
+                ${service.name}
+            </span>
 
-                <span class="service-price">
-                    ${service.price} грн
-                </span>
+            <span class="service-price">
+                ${service.price} грн
+            </span>
 
-            </button>
-        `;
-
-    });
-
-}
+        </button>
+    `;
+});
+} 
 
 function backToServices() {
   document.getElementById("dateBlock").style.display = "none";
@@ -319,16 +324,12 @@ function openBrows() {
     document.getElementById("categories").style.display = "none";
     document.getElementById("services").style.display = "block";
 
-    loadServices("/api/services", "servicesList");
-
 }
 
 function openLashes() {
 
     document.getElementById("categories").style.display = "none";
     document.getElementById("lashes").style.display = "block";
-
-    loadServices("/api/lashes", "lashesList");
 
 }
 
@@ -341,3 +342,4 @@ function backToCategories() {
 }
 
 renderCalendar();
+loadServices();
